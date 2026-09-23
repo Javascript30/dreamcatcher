@@ -19,6 +19,10 @@ Challenge:
 const app = express();
 
 // Needed for security headers! Do not delete!
+if (process.env.NODE_ENV === 'production') {
+    app.use(helmet());
+}
+
 // app.use(helmet());
 
 const PORT = process.env.PORT || 3001;
