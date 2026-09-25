@@ -106,7 +106,35 @@ In the Render dashboard, add:
 
 Click "Create Web Service" and Render will deploy your app automatically.
 
-### 5. Database Persistence
+### 5. Create a New Web Service on Render using Docker
+
+1. Go to https://render.com and sign in
+2. Click "New +" and select "Web Service"
+3. Connect your repository
+4. Configure the service:
+   - **Name**: dream-journal:v1 (or your choice)
+   - **Environment**: Node
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+   ```docker
+
+    docker build --platform linux/amd64 -t leskimm/dreamcatcher:v1 .
+
+    docker push leskimm/dreamcatcher:v1
+
+   ```
+
+### 6. Add Environment Variables
+
+In the Render dashboard, add:
+- `ANTHROPIC_API_KEY`: Your Anthropic API key
+
+### 7. Deploy with Docker
+
+Click "Create Web Service" and Render will deploy your app automatically.
+
+### 8. Database Persistence
 
 Note: The SQLite database file will be stored in Render's ephemeral filesystem. For production, consider:
 - Using Render's persistent disk feature
