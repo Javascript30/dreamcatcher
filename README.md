@@ -141,6 +141,25 @@ Note: The SQLite database file will be stored in Render's ephemeral filesystem. 
 - Migrating to PostgreSQL for better persistence
 - Backing up data regularly
 
+### 9. Terminating Processes & Signals
+
+```js
+   process.exit (0 or 1)
+
+   process.on('SIGTERM', gracefulShutdown);
+
+   async function gracefulShutdown() {
+      console.log('SIGTERM received, shutting down gracefully');
+  // Close the server first (stop accepting new connections)
+   server.close(() => {
+      console.log('HTTP server closed');
+    });
+
+   SIGINT
+   SIGTERM
+
+```
+
 ## Usage
 
 1. Enter your dream in the text area
